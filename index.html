@@ -1,5 +1,196 @@
 <!DOCTYPE html>
-<html>
-<head><title>munda.co</title></head>
-<body><h1>Coming soon</h1></body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Munda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --bg: #fafafa;
+            --accent: #c4703c;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter Tight', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 64px 24px 80px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 48px;
+        }
+
+        .headshot {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--border);
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.15s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding: 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        li a:hover {
+            color: var(--accent);
+        }
+
+        .context {
+            font-size: 13px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .coming-soon {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 48px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 20px 60px;
+            }
+
+            li {
+                flex-direction: column;
+                gap: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- Replace with: <img src="headshot.jpg" alt="Aaron Munda" class="headshot"> -->
+            <div class="headshot"></div>
+            <h1>Aaron Munda</h1>
+            <p class="meta">Marketing @ Base · Los Angeles, CA</p>
+            <div class="social-links">
+                <a href="https://x.com/moonduhhh" target="_blank">X</a>
+                <a href="https://www.linkedin.com/in/aaron-munda/" target="_blank">LinkedIn</a>
+                <a href="mailto:aaronmunda@gmail.com">Email</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Things I've Done</h2>
+            <ul>
+                <li><a href="https://www.coinbase.com/en-gb/blog/coinbase-and-shopify-bring-usdc-payments-on-base-to-millions-of-merchants-worldwide" target="_blank">Base + Shopify USDC Payments</a><span class="context">Base</span></li>
+                <li><a href="https://x.com/base/status/1945616829382365485" target="_blank">Base Pay Launch</a><span class="context">Base</span></li>
+                <li><a href="https://x.com/sarahzorah/status/1920330092385103974" target="_blank">Selling Coffee Onchain at Stripe Sessions</a><span class="context">Base</span></li>
+                <li><span>Base for Enterprise</span><span class="context coming-soon">link coming soon</span></li>
+                <li><span>Base Merch Store</span><span class="context">Base</span></li>
+                <li><span>MetaMask Portfolio Bridge</span><span class="context">MetaMask</span></li>
+                <li><span>Enterprise Customer Support</span><span class="context">Meta</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Things I Like</h2>
+            <ul>
+                <li><a href="https://share.google/pQIPzQjmJ4ENVMyG4" target="_blank">Las Cuatro Milpas</a><span class="context">restaurant</span></li>
+                <li><a href="https://usefulfictions.substack.com/p/how-to-increase-your-surface-area" target="_blank">Luck Surface Area</a><span class="context">concept</span></li>
+                <li><a href="https://www.amazon.com/Enders-Ender-Quintet-Orson-Scott/dp/0812550706" target="_blank">Ender's Game</a><span class="context">book</span></li>
+                <li><a href="https://www.amazon.com/Travels-Charley-Search-America-Steinbeck/dp/0140053204" target="_blank">Travels with Charley</a><span class="context">book</span></li>
+                <li><a href="https://www.imdb.com/title/tt0120812/" target="_blank">Rush Hour</a><span class="context">film</span></li>
+                <li><a href="https://cookwithdana.com/one-pot-gyudon-made-in-rice-cooker/" target="_blank">Zojirushi Rice Cooker Recipes</a><span class="context">cooking</span></li>
+                <li><a href="https://www.golfdigest.com/courses/or/bandon-dunes-golf-resort-pacific-dunes" target="_blank">Pacific Dunes Golf Course</a><span class="context">golf</span></li>
+                <li><a href="https://www.youtube.com/watch?v=-YetL8E3gFM" target="_blank">Apartment Life x Soulection</a><span class="context">music</span></li>
+                <li><a href="https://grantland.com/features/the-consequences-caring/" target="_blank">The Consequences of Caring</a><span class="context">essay</span></li>
+            </ul>
+        </section>
+
+        <footer>munda.co</footer>
+    </div>
+</body>
 </html>
