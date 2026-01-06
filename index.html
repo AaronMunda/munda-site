@@ -170,6 +170,31 @@
             color: var(--text-secondary);
         }
 
+        /* Page Load Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .delay-0 { animation-delay: 0s; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.15s; }
+        .delay-3 { animation-delay: 0.2s; }
+        .delay-4 { animation-delay: 0.3s; }
+        .delay-5 { animation-delay: 0.4s; }
+        .delay-6 { animation-delay: 0.5s; }
+
         /* Responsive */
         @media (max-width: 480px) {
             .container {
@@ -186,17 +211,17 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="IMG_9709.jpeg" alt="Aaron Munda" class="headshot">
-            <h1>Aaron Munda</h1>
-            <p class="meta">Marketing @ Base · Los Angeles, CA</p>
-            <div class="social-links">
+            <img src="IMG_9709.jpeg" alt="Aaron Munda" class="headshot animate delay-0">
+            <h1 class="animate delay-1">Aaron Munda</h1>
+            <p class="meta animate delay-2">Marketing @ Base · Los Angeles, CA</p>
+            <div class="social-links animate delay-3">
                 <a href="https://x.com/moonduhhh" target="_blank">X</a>
                 <a href="https://www.linkedin.com/in/aaron-munda/" target="_blank">LinkedIn</a>
                 <a href="mailto:aaronmunda@gmail.com">Email</a>
             </div>
         </header>
 
-        <section>
+        <section class="animate delay-4">
             <h2>Things I've Done</h2>
             <ul>
                 <li><a href="https://www.coinbase.com/en-gb/blog/coinbase-and-shopify-bring-usdc-payments-on-base-to-millions-of-merchants-worldwide" target="_blank">Base + Shopify USDC Payments</a><span class="context">Base</span></li>
@@ -209,7 +234,7 @@
             </ul>
         </section>
 
-        <section>
+        <section class="animate delay-5">
             <h2>Things I Like</h2>
             <ul>
                 <li><a href="https://share.google/pQIPzQjmJ4ENVMyG4" target="_blank">Las Cuatro Milpas</a><span class="context">restaurant</span></li>
@@ -224,7 +249,7 @@
             </ul>
         </section>
 
-        <footer>munda.co</footer>
+        <footer class="animate delay-6">munda.co</footer>
     </div>
 </body>
 </html>
