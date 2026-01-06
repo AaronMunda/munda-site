@@ -195,6 +195,65 @@
         .delay-5 { animation-delay: 0.4s; }
         .delay-6 { animation-delay: 0.5s; }
 
+        /* Expandable Cards */
+        .expandable {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .expandable-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            cursor: pointer;
+            padding: 2px 0;
+        }
+
+        .expandable-header:hover .expandable-title {
+            color: var(--accent);
+        }
+
+        .expandable-title {
+            color: var(--text-primary);
+            transition: color 0.2s ease;
+        }
+
+        .external-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            margin-left: 6px;
+        }
+
+        .external-link:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .embed-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin 0.3s ease-out;
+            margin-top: 0;
+        }
+
+        .embed-container.open {
+            max-height: 500px;
+            margin-top: 12px;
+        }
+
+        .embed-container iframe {
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .embed-container blockquote {
+            margin: 0;
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
             .container {
@@ -225,8 +284,26 @@
             <h2>Things I've Done</h2>
             <ul>
                 <li><a href="https://www.coinbase.com/en-gb/blog/coinbase-and-shopify-bring-usdc-payments-on-base-to-millions-of-merchants-worldwide" target="_blank">Base + Shopify USDC Payments</a><span class="context">Base</span></li>
-                <li><a href="https://x.com/base/status/1945616829382365485" target="_blank">Base Pay</a><span class="context">Base</span></li>
-                <li><a href="https://x.com/base/status/1920162011578609967?s=20" target="_blank">Sold Coffee Onchain at Stripe Sessions</a><span class="context">Base</span></li>
+                <li class="expandable">
+                    <div class="expandable-header">
+                        <span class="expandable-title">Base Pay</span>
+                        <span class="context">Base</span>
+                        <a href="https://x.com/base/status/1945616829382365485" class="external-link" target="_blank">↗</a>
+                    </div>
+                    <div class="embed-container">
+                        <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/base/status/1945616829382365485"></a></blockquote>
+                    </div>
+                </li>
+                <li class="expandable">
+                    <div class="expandable-header">
+                        <span class="expandable-title">Sold Coffee Onchain at Stripe Sessions</span>
+                        <span class="context">Base</span>
+                        <a href="https://x.com/base/status/1920162011578609967" class="external-link" target="_blank">↗</a>
+                    </div>
+                    <div class="embed-container">
+                        <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/base/status/1920162011578609967"></a></blockquote>
+                    </div>
+                </li>
                 <li><span>Base for Enterprise</span><span class="context coming-soon">link coming soon</span></li>
                 <li><a href="http://shop.base.org" target="_blank">Base Merch Store</a><span class="context">Base</span></li>
                 <li><span>MetaMask Portfolio Bridge</span><span class="context">MetaMask</span></li>
@@ -244,12 +321,53 @@
                 <li><a href="https://www.imdb.com/title/tt0120812/" target="_blank">Rush Hour</a><span class="context">film</span></li>
                 <li><a href="https://cookwithdana.com/one-pot-gyudon-made-in-rice-cooker/" target="_blank">Zojirushi Rice Cooker Recipes</a><span class="context">cooking</span></li>
                 <li><a href="https://www.golfdigest.com/courses/or/bandon-dunes-golf-resort-pacific-dunes" target="_blank">Pacific Dunes Golf Course</a><span class="context">golf</span></li>
-                <li><a href="https://www.youtube.com/watch?v=-YetL8E3gFM" target="_blank">aprtment life x Soulection</a><span class="context">music</span></li>
+                <li class="expandable">
+                    <div class="expandable-header">
+                        <span class="expandable-title">My Wedding Dinner Playlist</span>
+                        <span class="context">music</span>
+                        <a href="https://open.spotify.com/playlist/2ssuuagZpJnxJ1VcNgdkGX" class="external-link" target="_blank">↗</a>
+                    </div>
+                    <div class="embed-container">
+                        <iframe src="https://open.spotify.com/embed/playlist/2ssuuagZpJnxJ1VcNgdkGX" height="152" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </li>
+                <li class="expandable">
+                    <div class="expandable-header">
+                        <span class="expandable-title">aprtment life x Soulection</span>
+                        <span class="context">music</span>
+                        <a href="https://www.youtube.com/watch?v=-YetL8E3gFM" class="external-link" target="_blank">↗</a>
+                    </div>
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/-YetL8E3gFM" height="315" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </li>
                 <li><a href="https://grantland.com/features/the-consequences-caring/" target="_blank">The Consequences of Caring</a><span class="context">essay</span></li>
             </ul>
         </section>
 
         <footer class="animate delay-6">munda.co</footer>
     </div>
+
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+    <script>
+        document.querySelectorAll('.expandable-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                if (e.target.classList.contains('external-link')) return;
+
+                const container = header.nextElementSibling;
+                const isOpen = container.classList.contains('open');
+
+                // Close all others (accordion)
+                document.querySelectorAll('.embed-container.open').forEach(el => {
+                    el.classList.remove('open');
+                });
+
+                // Toggle current
+                if (!isOpen) {
+                    container.classList.add('open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
