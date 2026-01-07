@@ -145,19 +145,23 @@
 
         li {
             padding: 6px 0;
+        }
+
+        /* Regular links */
+        .link-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             gap: 12px;
         }
 
-        li a {
+        .link-row a {
             color: var(--text-primary);
             text-decoration: none;
             position: relative;
         }
 
-        li a::after {
+        .link-row a::after {
             content: '';
             position: absolute;
             left: 0;
@@ -168,11 +172,11 @@
             transition: width 0.25s ease;
         }
 
-        li a:hover {
+        .link-row a:hover {
             color: var(--accent);
         }
 
-        li a:hover::after {
+        .link-row a:hover::after {
             width: 100%;
         }
 
@@ -188,6 +192,123 @@
             font-style: italic;
         }
 
+        /* Expandable items */
+        .expandable {
+            cursor: pointer;
+        }
+
+        .expandable-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .expandable-title {
+            color: var(--text-primary);
+            position: relative;
+            transition: color 0.15s ease;
+        }
+
+        .expandable-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.25s ease;
+        }
+
+        .expandable:hover .expandable-title {
+            color: var(--accent);
+        }
+
+        .expandable:hover .expandable-title::after {
+            width: 100%;
+        }
+
+        /* Embed container */
+        .embed-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            position: relative;
+        }
+
+        .expandable.open .embed-container {
+            max-height: 500px;
+            margin-top: 12px;
+            opacity: 1;
+        }
+
+        .embed-wrapper {
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .external-link {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            z-index: 10;
+            transition: background 0.15s ease, color 0.15s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .external-link:hover {
+            background: #fff;
+            color: var(--accent);
+        }
+
+        /* YouTube embed */
+        .youtube-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Spotify embed */
+        .spotify-embed iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: 152px;
+            border: none;
+        }
+
+        /* Twitter embed */
+        .twitter-embed {
+            min-height: 200px;
+        }
+
+        .twitter-embed .twitter-tweet {
+            margin: 0 !important;
+        }
+
         /* Footer */
         footer {
             margin-top: 48px;
@@ -201,7 +322,7 @@
                 padding: 40px 20px 60px;
             }
 
-            li {
+            .link-row, .expandable-header {
                 flex-direction: column;
                 gap: 2px;
             }
@@ -224,33 +345,171 @@
         <section class="animate delay-5">
             <h2>Things I've Done</h2>
             <ul>
-                <li><a href="https://www.coinbase.com/en-gb/blog/coinbase-and-shopify-bring-usdc-payments-on-base-to-millions-of-merchants-worldwide" target="_blank">Base + Shopify USDC Payments</a><span class="context">Base</span></li>
-                <li><a href="https://x.com/base/status/1945616829382365485" target="_blank">Base Pay</a><span class="context">Base</span></li>
-                <li><a href="https://x.com/base/status/1920162011578609967" target="_blank">Sold Coffee Onchain at Stripe Sessions</a><span class="context">Base</span></li>
-                <li><span>Base for Enterprise</span><span class="context coming-soon">link coming soon</span></li>
-                <li><a href="http://shop.base.org" target="_blank">Base Merch Store</a><span class="context">Base</span></li>
-                <li><span>MetaMask Portfolio Bridge</span><span class="context">MetaMask</span></li>
-                <li><span>Enterprise Customer Support</span><span class="context">Meta</span></li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://www.coinbase.com/en-gb/blog/coinbase-and-shopify-bring-usdc-payments-on-base-to-millions-of-merchants-worldwide" target="_blank">Base + Shopify USDC Payments</a>
+                        <span class="context">Base</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable" onclick="toggleExpand(this)">
+                        <div class="expandable-header">
+                            <span class="expandable-title">Base Pay</span>
+                            <span class="context">Base</span>
+                        </div>
+                        <div class="embed-container">
+                            <div class="embed-wrapper">
+                                <a href="https://x.com/base/status/1945616829382365485" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
+                                <div class="twitter-embed">
+                                    <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+                                        <a href="https://x.com/base/status/1945616829382365485"></a>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable" onclick="toggleExpand(this)">
+                        <div class="expandable-header">
+                            <span class="expandable-title">Sold Coffee Onchain at Stripe Sessions</span>
+                            <span class="context">Base</span>
+                        </div>
+                        <div class="embed-container">
+                            <div class="embed-wrapper">
+                                <a href="https://x.com/base/status/1920162011578609967" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
+                                <div class="twitter-embed">
+                                    <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+                                        <a href="https://x.com/base/status/1920162011578609967"></a>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <span>Base for Enterprise</span>
+                        <span class="context coming-soon">link coming soon</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="http://shop.base.org" target="_blank">Base Merch Store</a>
+                        <span class="context">Base</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <span>MetaMask Portfolio Bridge</span>
+                        <span class="context">MetaMask</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <span>Enterprise Customer Support</span>
+                        <span class="context">Meta</span>
+                    </div>
+                </li>
             </ul>
         </section>
 
         <section class="animate delay-6">
             <h2>Things I Like</h2>
             <ul>
-                <li><a href="https://share.google/pQIPzQjmJ4ENVMyG4" target="_blank">Las Cuatro Milpas</a><span class="context">restaurant</span></li>
-                <li><a href="https://usefulfictions.substack.com/p/how-to-increase-your-surface-area" target="_blank">Luck Surface Area</a><span class="context">concept</span></li>
-                <li><a href="https://www.amazon.com/Enders-Ender-Quintet-Orson-Scott/dp/0812550706" target="_blank">Ender's Game</a><span class="context">book</span></li>
-                <li><a href="https://www.amazon.com/Travels-Charley-Search-America-Steinbeck/dp/0140053204" target="_blank">Travels with Charley</a><span class="context">book</span></li>
-                <li><a href="https://www.imdb.com/title/tt0120812/" target="_blank">Rush Hour</a><span class="context">film</span></li>
-                <li><a href="https://cookwithdana.com/one-pot-gyudon-made-in-rice-cooker/" target="_blank">Zojirushi Rice Cooker Recipes</a><span class="context">cooking</span></li>
-                <li><a href="https://www.golfdigest.com/courses/or/bandon-dunes-golf-resort-pacific-dunes" target="_blank">Pacific Dunes Golf Course</a><span class="context">golf</span></li>
-                <li><a href="https://open.spotify.com/playlist/2ssuuagZpJnxJ1VcNgdkGX" target="_blank">My Wedding Dinner Playlist</a><span class="context">music</span></li>
-                <li><a href="https://www.youtube.com/watch?v=-YetL8E3gFM" target="_blank">aprtment life x Soulection</a><span class="context">music</span></li>
-                <li><a href="https://grantland.com/features/the-consequences-caring/" target="_blank">The Consequences of Caring</a><span class="context">essay</span></li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://share.google/pQIPzQjmJ4ENVMyG4" target="_blank">Las Cuatro Milpas</a>
+                        <span class="context">restaurant</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://usefulfictions.substack.com/p/how-to-increase-your-surface-area" target="_blank">Luck Surface Area</a>
+                        <span class="context">concept</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://www.amazon.com/Enders-Ender-Quintet-Orson-Scott/dp/0812550706" target="_blank">Ender's Game</a>
+                        <span class="context">book</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://www.amazon.com/Travels-Charley-Search-America-Steinbeck/dp/0140053204" target="_blank">Travels with Charley</a>
+                        <span class="context">book</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://www.imdb.com/title/tt0120812/" target="_blank">Rush Hour</a>
+                        <span class="context">film</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://cookwithdana.com/one-pot-gyudon-made-in-rice-cooker/" target="_blank">Zojirushi Rice Cooker Recipes</a>
+                        <span class="context">cooking</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://www.golfdigest.com/courses/or/bandon-dunes-golf-resort-pacific-dunes" target="_blank">Pacific Dunes Golf Course</a>
+                        <span class="context">golf</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable" onclick="toggleExpand(this)">
+                        <div class="expandable-header">
+                            <span class="expandable-title">My Wedding Dinner Playlist</span>
+                            <span class="context">music</span>
+                        </div>
+                        <div class="embed-container">
+                            <div class="embed-wrapper">
+                                <a href="https://open.spotify.com/playlist/2ssuuagZpJnxJ1VcNgdkGX" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
+                                <div class="spotify-embed">
+                                    <iframe src="https://open.spotify.com/embed/playlist/2ssuuagZpJnxJ1VcNgdkGX?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable" onclick="toggleExpand(this)">
+                        <div class="expandable-header">
+                            <span class="expandable-title">aprtment life x Soulection</span>
+                            <span class="context">music</span>
+                        </div>
+                        <div class="embed-container">
+                            <div class="embed-wrapper">
+                                <a href="https://www.youtube.com/watch?v=-YetL8E3gFM" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
+                                <div class="youtube-embed">
+                                    <iframe src="https://www.youtube.com/embed/-YetL8E3gFM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="link-row">
+                        <a href="https://grantland.com/features/the-consequences-caring/" target="_blank">The Consequences of Caring</a>
+                        <span class="context">essay</span>
+                    </div>
+                </li>
             </ul>
         </section>
 
         <footer class="animate delay-7">munda.co</footer>
     </div>
+
+    <!-- Twitter embed script -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    <script>
+        function toggleExpand(element) {
+            element.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
