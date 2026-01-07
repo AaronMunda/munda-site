@@ -300,15 +300,6 @@
             border: none;
         }
 
-        /* Twitter embed */
-        .twitter-embed {
-            min-height: 200px;
-        }
-
-        .twitter-embed .twitter-tweet {
-            margin: 0 !important;
-        }
-
         /* Footer */
         footer {
             margin-top: 48px;
@@ -352,39 +343,15 @@
                     </div>
                 </li>
                 <li>
-                    <div class="expandable" onclick="toggleExpand(this)">
-                        <div class="expandable-header">
-                            <span class="expandable-title">Base Pay</span>
-                            <span class="context">Base</span>
-                        </div>
-                        <div class="embed-container">
-                            <div class="embed-wrapper">
-                                <a href="https://x.com/base/status/1945616829382365485" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
-                                <div class="twitter-embed">
-                                    <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
-                                        <a href="https://x.com/base/status/1945616829382365485"></a>
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="link-row">
+                        <a href="https://x.com/base/status/1945616829382365485" target="_blank">Base Pay</a>
+                        <span class="context">Base</span>
                     </div>
                 </li>
                 <li>
-                    <div class="expandable" onclick="toggleExpand(this)">
-                        <div class="expandable-header">
-                            <span class="expandable-title">Sold Coffee Onchain at Stripe Sessions</span>
-                            <span class="context">Base</span>
-                        </div>
-                        <div class="embed-container">
-                            <div class="embed-wrapper">
-                                <a href="https://x.com/base/status/1920162011578609967" target="_blank" class="external-link" onclick="event.stopPropagation();">↗</a>
-                                <div class="twitter-embed">
-                                    <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
-                                        <a href="https://x.com/base/status/1920162011578609967"></a>
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="link-row">
+                        <a href="https://x.com/base/status/1920162011578609967" target="_blank">Sold Coffee Onchain at Stripe Sessions</a>
+                        <span class="context">Base</span>
                     </div>
                 </li>
                 <li>
@@ -503,9 +470,6 @@
         <footer class="animate delay-7">munda.co</footer>
     </div>
 
-    <!-- Twitter embed script -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    
     <script>
         function toggleExpand(element) {
             element.classList.toggle('open');
