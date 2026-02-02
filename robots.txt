@@ -1,0 +1,8 @@
+# robots.txt for munda.co
+
+User-agent: *
+Allow: /
+
+# Discourage indexing of hidden writing pages
+Disallow: /having-kids
+Disallow: /having-kids.html
